@@ -5,12 +5,16 @@ import tensorflow as tf
 from tensorflow.keras.datasets import imdb
 from tensorflow.keras.preprocessing import sequence
 from tensorflow.keras.models import load_model
+from pathlib import Path
 
 
 word_index = imdb.get_word_index()
 reverse_word_index = {value: key for (key, value) in word_index.items()}
 
-model = load_model('simplernn_imdb_model.h5')
+BASE_DIR = Path(__file__).resolve().parent
+model_path = BASE_DIR / "simplernn_imdb_model.h5"
+
+model = load_model(model_path)
 
 # Helper functions
 
